@@ -1,7 +1,7 @@
-package main
+package pokedex
 
 import "fmt"
 
 func main(){
-	fmt.Println("Hello, World")
+	fmt.Println("Hello, World!")
 }
