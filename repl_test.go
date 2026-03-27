@@ -9,24 +9,27 @@ func TestCleanInput(t *testing.T){
 	}{
 		{
 		input: "  hello world  ",
-		expected: []string{"hello", "world"}
+		expected: []string{"hello", "world"},
 		},
 		{
 		input: "Charmander Bulbasaur PIKACHU",
-		expected: []string{"charmander", "bulbasaur", "pikachu"}
+		expected: []string{"charmander", "bulbasaur", "pikachu"},
 		},
 		{
-		input: "THIS IS a sentance with few WORDS ThAt are oF DiFFerent cases"
-		expected: []string{"this", "is", "a", "sentance", "with", "few", "words", "that", "are", "of", "different", "cases"}
+		input: "THIS IS a sentance with few WORDS ThAt are oF DiFFerent cases",
+		expected: []string{"this", "is", "a", "sentance", "with", "few", "words", "that", "are", "of", "different", "cases"},
 		},
 }
 
-	for _,c := cases {
+	for _, c := range cases {
 		actual := cleanInput(c.input)
 
 		for i := range actual {
 			word := actual[i]
 			expectedWord := c.expected[i]
+			if word != expectedWord {
+				t.Errorf("expected %q, actual: %q", expectedWord, word)
+			}
 		}
 	}
 }
