@@ -2,7 +2,10 @@ package main
 
 import (
 	"time"
+
 	"github.com/amzyd99/pokedexcli/internal/pokeapi"
+	"github.com/amzyd99/pokedexcli/internal/pokecache"
+
 )
 
 type config struct {
@@ -14,7 +17,7 @@ type config struct {
 
 
 func main(){
-	pokeClient := pokeapi.NewClient(5 * time.Second)
+	pokeClient := pokeapi.NewClient(5 * time.Second, 5 * time.Second)
 	cfg := &config{
 		pokeapiClient: pokeClient,
 	}
