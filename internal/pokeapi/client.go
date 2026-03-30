@@ -4,12 +4,12 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/amzyd99/pokedexcli/internal"
+	"github.com/amzyd99/pokedexcli/internal/pokecache"
 )
 
 type Client struct {
 	httpClient http.Client
-	cache      internal.Cache
+	cache      pokecache.Cache
 }
 
 func NewClient(timeout, cacheInterval time.Duration) Client {
@@ -17,6 +17,6 @@ func NewClient(timeout, cacheInterval time.Duration) Client {
 		httpClient: http.Client{
 			Timeout: timeout,
 		},
-		cache: *internal.NewCache(cacheInterval),
+		cache: *pokecache.NewCache(cacheInterval),
 	}
 }
